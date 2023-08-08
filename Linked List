@@ -1,0 +1,45 @@
+/ Leetcode 24(M) Swap Nodes in Pairs
+ 
+// 解法：递归/迭代
+
+
+**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        // 寻找递归的终止条件
+        // 1.head指向的结点为null
+        // 2.head指向的结点的下一个结点为null
+        // 在这两种情况下，一个结点或者空结点无论怎么交换操作，都是原来的head
+        if(head == null || head.next == null){
+            return head;
+        }
+
+        // 不断的通过递归调用，直到无法递归下去，递归的最小粒度是在最后一个结点或者最后两个结点。
+        ListNode subHead = swapPairs(head.next.next);
+        // here ListNode is the given type in the hint, subhead is the variable name we made
+
+        // 接下来，需要把两两交换过的结点进行串联
+        // 对于head这个结点来说，他是和他相邻的右边这个结点进行交换操作
+        // 所以要先保存这个结点，并且经过上述递归终止条件的判断，head.next，是必然存在的。
+        ListNode headNext = head.next;
+
+        // head原先指向headNext，交换后，headNext指向head
+        headNext.next = head;
+
+        // headNext原先指向subHead，现在需要让head指向subHead
+        head.next = subHead;
+
+        // 交换后，原来的第二位结点 headNext变成了第一位，把他返回就行
+        return headNext;
+    }
+}
