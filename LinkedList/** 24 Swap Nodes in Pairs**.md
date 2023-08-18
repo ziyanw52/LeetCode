@@ -58,6 +58,6 @@ class Solution {
 }
 ```
 ---
->注意：head/headNext/subHead这几个结点在交换之后分别指向哪
+>注意：head/headNext/subHead这几个结点在交换之后分别指向哪.注意if括号的位置
 >---
 **时间复杂度 O(n); 空间复杂度 O(n)**
