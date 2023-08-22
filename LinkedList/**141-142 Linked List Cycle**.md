@@ -26,7 +26,9 @@ public class Solution {
 
 **142.**
 >Medium
+
 *1.判断链表是否有环 2.寻找环的入口*
+
 >用fast slow指针判断是否有环。有环，所以fast指针不可能指向空；没环，fast指向空。fast先进入环，在环里绕圈圈，等待和slow相遇
 >ab两个指针，a指向head，b指向刚刚fast和slow相遇的结点，每个移动1个结点，相交处就是环的入口。
 
